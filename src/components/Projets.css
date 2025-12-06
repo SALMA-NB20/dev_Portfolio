@@ -1,0 +1,231 @@
+/* Projets CSS */
+
+.projets {
+  padding: 8rem 0 6rem;
+  background: linear-gradient(180deg, #ede5eb 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.projets::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 50px,
+      rgba(115, 78, 123, 0.02) 50px,
+      rgba(115, 78, 123, 0.02) 100px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.projets .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.projets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.projet-card {
+  background: #ffffff;
+  border: 2px solid var(--color-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(115, 78, 123, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.projet-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.projet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(115, 78, 123, 0.2);
+  border-color: var(--color-primary);
+}
+
+.projet-card:hover::before {
+  transform: scaleX(1);
+}
+
+.projet-image {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--color-light);
+}
+
+.projet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projet-card:hover .projet-image img {
+  transform: scale(1.08);
+}
+
+.projet-date {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(115, 78, 123, 0.3);
+}
+
+.projet-content {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.projet-titre {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.projet-description {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.projet-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tag {
+  font-size: 0.8rem;
+  background: var(--color-light);
+  color: var(--color-primary);
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(115, 78, 123, 0.2);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.projet-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.role-tag {
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+  background: rgba(138, 70, 144, 0.1);
+  border: 1px solid rgba(138, 70, 144, 0.3);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.projet-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.projet-actions .btn {
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .projets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projets {
+    padding: 5rem 0 3rem;
+  }
+  
+  .projets-grid {
+    gap: 1.5rem;
+  }
+  
+  .projet-content {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  
+  .projet-titre {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .projets {
+    padding: 4rem 0 2rem;
+  }
+  
+  .projets-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .projet-content {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  
+  .projet-titre {
+    font-size: 1.1rem;
+  }
+  
+  .projet-description {
+    font-size: 0.9rem;
+  }
+  
+  .projet-actions {
+    flex-direction: column;
+  }
+  
+  .projet-actions .btn {
+    width: 100%;
+  }
+}
