@@ -27,63 +27,6 @@ const Contact = () => {
       <div className='container'>
         <h2 className='section-title'>Contactez-moi</h2>
         <div className='contact-content'>
-          <div className='contact-info'>
-            <div className='contact-header'>
-              <h3>Informations de contact</h3>
-              <p>N'hésitez pas à me contacter pour discuter de vos projets</p>
-            </div>
-            
-            <div className='contact-details'>
-              <div className='contact-item'>
-                <div className='contact-icon'>
-                  <i className='fas fa-envelope'></i>
-                </div>
-                <div className='contact-text'>
-                  <span className='contact-label'>Email</span>
-                  <span className='contact-value'>NBIGASalma221@gmail.com</span>
-                </div>
-              </div>
-              
-              <div className='contact-item'>
-                <div className='contact-icon'>
-                  <i className='fas fa-phone'></i>
-                </div>
-                <div className='contact-text'>
-                  <span className='contact-label'>Téléphone</span>
-                  <span className='contact-value'>+212 07 70 27 56 78</span>
-                </div>
-              </div>
-              
-              <div className='contact-item'>
-                <div className='contact-icon'>
-                  <i className='fas fa-map-marker-alt'></i>
-                </div>
-                <div className='contact-text'>
-                  <span className='contact-label'>Localisation</span>
-                  <span className='contact-value'>Morocco, SAFI</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className='social-section'>
-              <h4>Suivez-moi</h4>
-              <div className='social-links'>
-                <a href='' className='social-link' aria-label='LinkedIn'>
-                  <i className='fab fa-linkedin'></i>
-                  <span>LinkedIn</span>
-                </a>
-                <a href='' className='social-link' aria-label='GitHub'>
-                  <i className='fab fa-github'></i>
-                  <span>GitHub</span>
-                </a>
-                <a href='' className='social-link' aria-label='Twitter'>
-                  <i className='fab fa-twitter'></i>
-                  <span>Twitter</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          
           <form className='contact-form' onSubmit={handleSubmit}>
             <div className='form-group'>
               <label htmlFor='nom'>Nom</label>
@@ -122,6 +65,24 @@ const Contact = () => {
               Envoyer le message
             </button>
           </form>
+          
+          <div className='social-section'>
+            <h4>Suivez-moi</h4>
+            <div className='social-links'>
+              <a href='' className='social-link' aria-label='LinkedIn'>
+                <i className='fab fa-linkedin'></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href='' className='social-link' aria-label='GitHub'>
+                <i className='fab fa-github'></i>
+                <span>GitHub</span>
+              </a>
+              <a href='' className='social-link' aria-label='Twitter'>
+                <i className='fab fa-twitter'></i>
+                <span>Twitter</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
