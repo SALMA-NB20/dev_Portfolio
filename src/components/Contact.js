@@ -1,4 +1,5 @@
 ﻿import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -7,6 +8,14 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
+
+  // Replace these with your EmailJS credentials
+  // Get them from: https://dashboard.emailjs.com/admin
+  const SERVICE_ID = 'YOUR_SERVICE_ID';
+  const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  const PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
   const handleChange = (e) => {
     setFormData({
@@ -17,9 +26,39 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulaire soumis:', formData);
-    alert('Message envoyé avec succès !');
-    setFormData({ nom: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    // Prepare template parameters
+    const templateParams = {
+      from_name: formData.nom,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: 'salmanbiga2060@gmail.com' 
+    };
+
+    // Send email using EmailJS
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          setStatus({
+            type: 'success',
+            message: 'Message envoyé avec succès !'
+          });
+          setFormData({ nom: '', email: '', message: '' });
+          setIsSubmitting(false);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          setStatus({
+            type: 'error',
+            message: "Échec de l'envoi, We still waiting for pwd from salma."
+          });
+          setIsSubmitting(false);
+        }
+      );
   };
 
   return (
@@ -61,9 +100,14 @@ const Contact = () => {
                 required
               ></textarea>
             </div>
-            <button type='submit' className='btn btn-primary'>
-              Envoyer le message
+            <button type='submit' className='btn btn-primary' disabled={isSubmitting}>
+              {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
             </button>
+            {status.message && (
+              <div className={`status-message ${status.type}`}>
+                {status.message}
+              </div>
+            )}
           </form>
           
           <div className='social-section'>
