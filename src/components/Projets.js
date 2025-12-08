@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Projets.css';
+import siteEcom from '../assets/siteecom.png';
+import siteGestion from '../assets/sitegestion.png';
+import siteReservation from '../assets/sitereservation.png';
+import portfoliomodern from '../assets/portfoliomodern.png';
 
 const Projets = () => {
+  const [liveStatus, setLiveStatus] = useState({ id: null, message: '' });
+
+  const handleLiveClick = (e, projet) => {
+    if (!projet.lien) {
+      e.preventDefault();
+      setLiveStatus({ id: projet.id, message: 'The project has not been deployed yet.' });
+    } else {
+      setLiveStatus({ id: null, message: '' });
+    }
+  };
+
   const projets = [
     {
       id: 1,
       titre: "Site E-commerce",
-      description: "Application web developpe par Html Css et Bootstrap",
+      description: "site web developpe par Html Css et Bootstrap",
       technologies: ["Html", "Css", "Bootstrap"],
-      image: "/image%20e-com.png",
-      lien: "#",
-      repo: "#",
+      image: siteEcom,
+      lien: "https://site-ecom-sand.vercel.app/",
+      repo: "https://github.com/SALMA-NB20/parfume-website",
       date: "2024",
       roles: ["Frontend"],
     },
@@ -19,20 +34,20 @@ const Projets = () => {
       titre: "Site Gestion ",
       description: "Suivi d'entraînements et nutrition, notifications, et synchronisation cloud.",
       technologies: ["Laravel", "Mysql", ],
-      image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?q=80&w=1200&auto=format&fit=crop",
-      lien: "#",
-      repo: "#",
+      image: siteGestion,
+      lien: "",
+      repo: "https://github.com/SALMA-NB20/Gestion_Centre",
       date: "2025",
       roles: ["Frontend", "Backend"] ,
     },
     {
       id: 3,
       titre: "Site Gestion Hotel",
-      description: "KPIs et graphiques avec filtres temps réel et export.",
+      description: "une plateforme web moderne dédiée à la gestion complète des opérations hôtelières.",
       technologies: ["React", "Express", "Node.js", "MongoDb"],
-      image: "/image0.png",
-      lien: "#",
-      repo: "#",
+      image: siteReservation,
+      lien: "",
+      repo: "https://github.com/SALMA-NB20/hotel-reservation",
       date: "2025",
       roles: ["Frontend" , "Backend"],
     },
@@ -40,10 +55,10 @@ const Projets = () => {
       id: 4,
       titre: "Portfolio Moderne",
       description: "Site personnel performant, SEO friendly, et animations subtiles.",
-      technologies: ["React", "Vite", "Framer Motion"],
-      image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop",
-      lien: "#",
-      repo: "#",
+      technologies: ["React", "Framer Motion"],
+      image: portfoliomodern,
+      lien: "https://salmanbiga.vercel.app/",
+      repo: "https://github.com/SALMA-NB20/dev_Portfolio",
       date: "2025",
       roles: ["Frontend", "Design"],
     },
@@ -73,9 +88,20 @@ const Projets = () => {
                   ))}
                 </div>
                 <div className="projet-actions">
-                  <a href='https://github.com/SALMA-NB20'className="btn btn-primary" target="_blank" rel="noreferrer">Live</a>
-                  <a href='https://github.com/SALMA-NB20' className="btn btn-secondary" target="_blank" rel="noreferrer">Code</a>
+                  <a
+                    href={projet.lien || '#'}
+                    className="btn btn-primary"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => handleLiveClick(e, projet)}
+                  >
+                    Live
+                  </a>
+                  <a href={projet.repo} className="btn btn-secondary" target="_blank" rel="noreferrer">Code</a>
                 </div>
+                {liveStatus.id === projet.id && liveStatus.message && (
+                  <div className="projet-live-status">{liveStatus.message}</div>
+                )}
               </div>
             </article>
           ))}

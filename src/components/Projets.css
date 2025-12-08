@@ -175,6 +175,13 @@
   text-align: center;
 }
 
+.projet-live-status {
+  margin-top: 0.75rem;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 1024px) {
   .projets-grid {
     grid-template-columns: repeat(2, 1fr);

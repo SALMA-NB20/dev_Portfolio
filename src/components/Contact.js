@@ -11,11 +11,10 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  // Replace these with your EmailJS credentials
-  // Get them from: https://dashboard.emailjs.com/admin
-  const SERVICE_ID = 'YOUR_SERVICE_ID';
-  const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-  const PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+ 
+  const SERVICE_ID = 'service_pngom8j';
+  const TEMPLATE_ID = 'template_0kosycq';
+  const PUBLIC_KEY = 'rkqjXK1oh-RDHh1lq';
 
   const handleChange = (e) => {
     setFormData({
@@ -29,15 +28,21 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
-    // Prepare template parameters
+    const now = new Date().toLocaleString('fr-FR', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+
+ 
     const templateParams = {
-      from_name: formData.nom,
-      from_email: formData.email,
+      nom: formData.nom,
+      email: formData.email,
       message: formData.message,
-      to_email: 'salmanbiga2060@gmail.com' 
+      time: now,
+      to_email: 'salmanbiga2060@gmail.com'
     };
 
-    // Send email using EmailJS
+
     emailjs
       .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       .then(
@@ -54,7 +59,7 @@ const Contact = () => {
           console.log('FAILED...', error);
           setStatus({
             type: 'error',
-            message: "Échec de l'envoi, We still waiting for pwd from salma."
+            message: "Échec de l'envoi. Merci de réessayer dans un instant."
           });
           setIsSubmitting(false);
         }
@@ -117,13 +122,13 @@ const Contact = () => {
                 <i className='fab fa-linkedin'></i>
                 <span>LinkedIn</span>
               </a>
-              <a href='' className='social-link' aria-label='GitHub'>
+              <a href='https://github.com/SALMA-NB20' className='social-link' aria-label='GitHub'>
                 <i className='fab fa-github'></i>
                 <span>GitHub</span>
               </a>
-              <a href='' className='social-link' aria-label='Twitter'>
-                <i className='fab fa-twitter'></i>
-                <span>Twitter</span>
+              <a href='https://instagram.com/salma_nb20' className='social-link' aria-label='Instagram'>
+                <i className='fab fa-instagram'></i>
+                <span>Instagram</span>
               </a>
             </div>
           </div>

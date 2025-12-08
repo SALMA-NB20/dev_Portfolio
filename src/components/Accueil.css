@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-/* Tech-inspired code background elements */
+
 .accueil::before {
   content: '';
   position: absolute;
@@ -29,7 +29,7 @@
   z-index: 0;
 }
 
-/* Geometric shapes */
+
 .accueil::after {
   content: '';
   position: absolute;
@@ -78,7 +78,7 @@
   position: relative;
 }
 
-/* Code snippet decoration */
+
 .hero-title::before {
   content: '';
   display: none;
@@ -144,7 +144,7 @@
   position: relative;
 }
 
-/* Geometric decoration around profile */
+
 .profile-image::before {
   content: '';
   position: absolute;
@@ -180,7 +180,7 @@
   border-radius: 50%;
 }
 
-/* Buttons hover effects */
+
 .btn {
   transform: translateZ(0);
 }
@@ -315,7 +315,7 @@
   }
 }
 
-/* Motion-reduce for accessibility */
+
 @media (prefers-reduced-motion: reduce) {
   .hero-title,
   .hero-subtitle,

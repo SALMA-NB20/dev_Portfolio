@@ -16,7 +16,6 @@ const Navigation = () => {
 
   const handleHashClick = (e, hash) => {
     if (location.pathname === '/') {
-      // Already on home page, just scroll to hash
       e.preventDefault();
       const element = document.querySelector(hash);
       if (element) {
@@ -29,9 +28,7 @@ const Navigation = () => {
         });
       }
     }
-    // Close mobile menu after clicking
     setIsMenuOpen(false);
-    // If not on home page, Link will handle navigation to /#hash
   };
 
   const toggleMenu = () => {

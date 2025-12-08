@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Portfolio NBIGA Salma
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Single-page portfolio built with React (CRA), showcasing projects, skills, and a contact form powered by EmailJS. 
+All assets are stored locally in `src/assets` for predictable deployments.
+
+## Features
+- Navigation with hash-aware smooth scrolling (`ScrollToHash`).
+- Hero/Accueil section with local profile image.
+- Projects grid with local screenshots (`siteecom.png`, `sitegestion.png`, `sitereservation.png`, `portfoliomodern.png`) and per-project links.
+- Live/Code buttons: `Code` opens the repo; `Live` opens the live link or shows an inline “The project has not been deployed yet.” message when missing.
+- Contact form (EmailJS) with inline success/error status messages—no browser alerts. Includes timestamp sent to the template (`nom`, `email`, `message`, `time`, `to_email`).
+- Error boundary around the app and footer for safer rendering.
+
+## Tech Stack
+- React (Create React App)
+- React Router
+- EmailJS (`@emailjs/browser`)
+- Component-scoped CSS (e.g., `Contact.css`, `Projets.css`)
+
+## Project Data (src/components/Projets.js)
+- Site E-commerce — live: https://site-ecom-sand.vercel.app/ — repo: https://github.com/SALMA-NB20/parfume-website
+- Site Gestion — repo: https://github.com/SALMA-NB20/Gestion_Centre (live pending)
+- Site Gestion Hotel — repo: https://github.com/SALMA-NB20/hotel-reservation (live pending)
+- Portfolio Moderne — live: https://salmanbiga.vercel.app/ — repo: https://github.com/SALMA-NB20/dev_Portfolio
+
+## Setup
+```bash
+npm install
+npm start
+```
+App runs at http://localhost:3000.
+
+## EmailJS Configuration
+Update `src/components/Contact.js` with your keys:
+```js
+const SERVICE_ID = '...';
+const TEMPLATE_ID = '...';
+const PUBLIC_KEY = '...';
+```
+Ensure the EmailJS template uses: `{{nom}}`, `{{email}}`, `{{message}}`, `{{time}}`, `{{to_email}}`. The provided HTML template in EmailJS should include these placeholders.
+
+## Assets
+All images live in `src/assets/` and are imported directly in components (no `public/` references).
 
 ## Available Scripts
+- `npm start` — dev server with hot reload.
+- `npm test` — CRA test runner.
+- `npm run build` — production build.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployment
+Any static host works (e.g., netlify/Vercel/etc..). Ensure environment variables (EmailJS keys) are set if your host requires them.

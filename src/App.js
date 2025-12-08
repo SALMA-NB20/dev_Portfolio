@@ -7,7 +7,7 @@ import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Component to handle scroll to hash on route change
+
 const ScrollToHash = () => {
   const location = useLocation();
 
